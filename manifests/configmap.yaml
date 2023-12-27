@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-config
+data:
+  AUTH_IP: "auth:50051"
+  EMBEDDING_IP: "embedding:50052"

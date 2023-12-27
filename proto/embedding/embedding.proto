@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = ".";
+package proto;
+
+service EmbeddingService {
+  rpc GetImageEmbedding (ImageRequest) returns (EmbeddingResponse);
+  rpc GetTextEmbedding (TextRequest) returns (EmbeddingResponse);
+}
+
+message ImageRequest {
+  string image_path = 1;
+  string model = 2;
+}
+
+message TextRequest {
+  string input_text = 1;
+  string model = 2;
+}
+
+message EmbeddingResponse {
+  Data data = 1;
+  string model = 2;
+  float execution_time = 3;
+  Usage usage = 4;
+}
+
+message Data {
+  repeated float embedding = 1;
+  float length = 2;
+}
+
+message Usage {
+  float total_tokens = 1;
+}
