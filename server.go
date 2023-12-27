@@ -36,12 +36,12 @@ func main() {
     }
 
     authAddress := env.Get("AUTH_IP", "")
-    embeddingAddress := env.Get("EMBEDDING_IP", "")
+    // embeddingAddress := env.Get("EMBEDDING_IP", "")
 
     authConn := createGRPCConnection(authAddress)
     defer authConn.Close()
 
-    embeddingConn := createGRPCConnection(embeddingAddress)
+    embeddingConn := createGRPCConnection("embedding:50052")
     defer embeddingConn.Close()
 
     r := gin.Default()
