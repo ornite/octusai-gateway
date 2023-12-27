@@ -2,7 +2,6 @@ package routes
 
 import (
 	"context"
-	"log"
 	"net/http"
 
 	pb "gateway/proto/embedding"
@@ -31,8 +30,7 @@ func (gr *EmbeddingRouter) RegisterRoutes(router *gin.Engine) {
 }
 
 func (ar *EmbeddingRouter) textEmbeddingHandler(c *gin.Context) {
-	log.Println("Get Data")
-    var request pb.TextRequest
+	var request pb.TextRequest
 	// Attempt to bind the incoming JSON payload to the Request struct.
 	if err := c.ShouldBindJSON(&request); err != nil {
 		// If binding fails, return a 400 Bad Request with the error message.
